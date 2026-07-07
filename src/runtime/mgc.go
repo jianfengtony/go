@@ -1188,6 +1188,9 @@ func gcMarkTermination(stw worldStop) {
 		}
 		print("\n")
 		printunlock()
+
+		// Print GC worker trace (STW still active)
+		printGCWorkerTrace()
 	}
 
 	// Set any arena chunks that were deferred to fault.
@@ -1353,6 +1356,8 @@ func gcBgMarkWorker() {
 		if pp.gcMarkWorkerMode == gcMarkWorkerNotWorker {
 			throw("gcBgMarkWorker: mode not set")
 		}
+
+		recordGCWorkerTrace(gp.m.procid)
 
 		startTime := nanotime()
 		pp.gcMarkWorkerStartTime = startTime

@@ -10,6 +10,7 @@ const (
 	SYS_EPOLL_PWAIT   = 281
 	SYS_EPOLL_CREATE1 = 291
 	SYS_EPOLL_PWAIT2  = 441
+	SYS_GETCPU        = 309
 
 	EPOLLIN       = 0x1
 	EPOLLOUT      = 0x4
